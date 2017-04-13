@@ -1,5 +1,6 @@
 #include <iostream>
 #include <math.h> //no se usa por ahora
+//#define <texto_a_reemplazar> <palabras reemplazadas>
 
 using namespace std;
 
@@ -8,10 +9,14 @@ int main()
     int programa = 1;
     string nombre;
 
-    for(;programa>0;){
+    while(true){
         cout << "Exit: 0" << endl << "Nombre: 1" << endl << "Temperatura: 2" << endl << "Distancia: 3" << endl;
         cin >> programa;
 switch(programa){
+case 0:
+    return 0;
+break;
+
 //Programa Nombre
 {
 case 1:
