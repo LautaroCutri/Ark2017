@@ -1,0 +1,49 @@
+#include <iostream>
+#include <math.h> //no se usa por ahora
+
+using namespace std;
+
+int main()
+{
+    int programa = 1;
+    string nombre;
+
+    for(;programa>0;){
+        cout << "Exit: 0" << endl << "Nombre: 1" << endl << "Temperatura: 2" << endl << "Distancia: 3" << endl;
+        cin >> programa;
+switch(programa){
+//Programa Nombre
+{
+case 1:
+    cout << "Por favor ingrese su nombre" << endl;
+    cin >> nombre;
+    cout << "Hola, " << nombre << endl;
+break;
+}
+//Programa Temperatura
+{
+case 2:
+    cout << "Por favor ingrese la temperatura en fahrenheit" << endl;
+float temperaturaF, temperaturaC;
+    cin >> temperaturaF;
+    temperaturaC = 5.0/9 * (temperaturaF - 32);
+    cout << "La temperatura en grados celsios es: Cº " << temperaturaC << endl;
+break;
+}
+//Programa Distancia
+{
+case 3:
+    float KMH, tiempo;
+    cout << "Por favor ingrese la velocidad del misil en KMH" << endl;
+    cin >> KMH;
+    cout << "Por favor ingrese el tiempo desde el lanzamiento en minutos" << endl;
+    cin >> tiempo;
+    cout << "Distancia recorrida: " << tiempo / 60 * KMH << " KM" << endl;
+
+break;
+}
+default: cout << "Lo siento, esa opcion no esta disponible" << endl;
+                 }
+                     }
+    return 0;
+}
