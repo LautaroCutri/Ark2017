@@ -1,14 +1,37 @@
 #include <iostream>
 #include <math.h> //no se usa por ahora
 //#define <texto_a_reemplazar> <palabras reemplazadas>
+#define bs busysleep(3.5)
 
 using namespace std;
+
+void busysleep(int decisegundos);
+
+void busysleep(int decisegundos) // cross-platform sleep function
+{
+    clock_t time_end;
+    time_end = clock() + decisegundos * CLOCKS_PER_SEC/10;
+    while (clock() < time_end)
+    {
+    }
+}
 
 int main()
 {
     int programa = 1;
     string nombre;
-
+//Just a cool welcome effect
+{
+    cout << "H";cout.flush();bs;
+    cout << "e";cout.flush();bs;
+    cout << "l";cout.flush();bs;
+    cout << "l";cout.flush();bs;
+    cout << "o";cout.flush();bs;
+    cout << ".";cout.flush();bs;
+    cout << ".";cout.flush();bs;
+    cout << ".";cout.flush();bs;
+    cout << endl;
+}
     while(true){
         cout << "Exit: 0" << endl << "Nombre: 1" << endl << "Temperatura: 2" << endl << "Distancia: 3" << endl;
         cin >> programa;
