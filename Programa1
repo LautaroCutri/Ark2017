@@ -1,19 +1,34 @@
 #include <iostream>
 #include <math.h> //no se usa por ahora
-//#define <texto_a_reemplazar> <palabras reemplazadas>
-#define bs busysleep(3.5)
+#include <time.h>
+/*
+ * define <texto_a_reemplazar> <palabras reemplazadas>
+ * funciones empiezan con mayuscula
+
+*/
+#define bs Busysleep
 
 using namespace std;
 
-void busysleep(int decisegundos);
-
-void busysleep(int decisegundos) // cross-platform sleep function
-{
+void busysleep(int decisegundos){ // cross-platform sleep function
     clock_t time_end;
     time_end = clock() + decisegundos * CLOCKS_PER_SEC/10;
     while (clock() < time_end)
     {
     }
+}
+
+void Clock_deco(){ //clock decoration
+
+        for (int ru=0; ru<3; ru++)
+        {
+            cout << " |";cout.flush();bs(7);
+            cout << '\b' << '\b';
+            cout << " /";cout.flush();bs(7);
+            cout << '\b' << '\b';
+            cout << " \\";cout.flush();bs(7);
+            cout << '\b' << '\b';
+        }
 }
 
 int main()
@@ -32,6 +47,7 @@ int main()
     cout << ".";cout.flush();bs;
     cout << endl;
 }
+Clock_deco();
     while(true){
         cout << "Exit: 0" << endl << "Nombre: 1" << endl << "Temperatura: 2" << endl << "Distancia: 3" << endl;
         cin >> programa;
@@ -45,6 +61,7 @@ break;
 case 1:
     cout << "Por favor ingrese su nombre" << endl;
     cin >> nombre;
+Clock_deco();
     cout << "Hola, " << nombre << endl;
 break;
 }
@@ -55,6 +72,7 @@ case 2:
 float temperaturaF, temperaturaC;
     cin >> temperaturaF;
     temperaturaC = 5.0/9 * (temperaturaF - 32);
+Clock_deco();
     cout << "La temperatura en grados celsios es: Cº " << temperaturaC << endl;
 break;
 }
@@ -66,6 +84,7 @@ case 3:
     cin >> KMH;
     cout << "Por favor ingrese el tiempo desde el lanzamiento en minutos" << endl;
     cin >> tiempo;
+Clock_deco();
     cout << "Distancia recorrida: " << tiempo / 60 * KMH << " KM" << endl;
 
 break;
