@@ -10,7 +10,8 @@
 
 using namespace std;
 
-void busysleep(int decisegundos){ // cross-platform sleep function
+void Busysleep(int decisegundos){ // cross-platform busy-sleep function
+
     clock_t time_end;
     time_end = clock() + decisegundos * CLOCKS_PER_SEC/10;
     while (clock() < time_end)
@@ -20,7 +21,7 @@ void busysleep(int decisegundos){ // cross-platform sleep function
 
 void Clock_deco(){ //clock decoration
 
-        for (int ru=0; ru<3; ru++)
+        for (int ru=0; ru<2; ru++)
         {
             cout << " |";cout.flush();bs(7);
             cout << '\b' << '\b';
@@ -33,23 +34,23 @@ void Clock_deco(){ //clock decoration
 
 int main()
 {
-    int programa = 1;
+    int programa;
     string nombre;
 //Just a cool welcome effect
 {
-    cout << "H";cout.flush();bs;
-    cout << "e";cout.flush();bs;
-    cout << "l";cout.flush();bs;
-    cout << "l";cout.flush();bs;
-    cout << "o";cout.flush();bs;
-    cout << ".";cout.flush();bs;
-    cout << ".";cout.flush();bs;
-    cout << ".";cout.flush();bs;
+    cout << "H";cout.flush();bs(3.5);
+    cout << "e";cout.flush();bs(3.5);
+    cout << "l";cout.flush();bs(3.5);
+    cout << "l";cout.flush();bs(3.5);
+    cout << "o";cout.flush();bs(3.5);
+    cout << ".";cout.flush();bs(3.5);
+    cout << ".";cout.flush();bs(3.5);
+    cout << ".";cout.flush();bs(3.5);
     cout << endl;
 }
 Clock_deco();
     while(true){
-        cout << "Exit: 0" << endl << "Nombre: 1" << endl << "Temperatura: 2" << endl << "Distancia: 3" << endl;
+        cout << "Exit: 0" << endl << "Nombre: 1" << endl << "Temperatura: 2" << endl << "Distancia: 3" << endl << "+/-: 4" << endl << "Interseccion: 5" << endl;
         cin >> programa;
 switch(programa){
 case 0:
@@ -89,8 +90,49 @@ Clock_deco();
 
 break;
 }
-default: cout << "Lo siento, esa opcion no esta disponible" << endl;
-                 }
+//Programa +/-
+{
+case 4:
+    int numero;
+    cout << "Ingrese un numero" << endl;
+    cin >> numero;
+Clock_deco();
+    if (numero>0){
+        cout << "El numero " << numero << " es positivo" << endl;
+    }
+                else{
+        if (numero==0){
+            cout << "El numero " << numero << " es cero" << endl;
+            break;
+        }
+                cout << "El numero " << numero << " es negativo" << endl;
+    }
+break;
+}
+//Programa interseccion
+{
+case 5:
+        float pendiente1, pendiente2, ordenada1, ordenada2;
+    cout << "Ingrese la pendiente de la primer recta seguido de la segunda" << endl;
+    cin >> pendiente1 >> pendiente2;
+    cout << "Ingrese la ordenada de la primer recta seguido de la segunda" << endl;
+    cin >> ordenada1 >> ordenada2;
+Clock_deco();
+    if (pendiente1==pendiente2){
+        if (ordenada1==ordenada2){
+            cout << "La solucion es toda la recta" << endl;
+            break;
+        }
+        cout << "No existe interseccion" << endl;
+                 }else{
+        float interseccionX, interseccionY;
+       interseccionX = (ordenada2-ordenada1)/(pendiente1-pendiente2);
+       interseccionY = pendiente1*interseccionX+ordenada1;
+       cout << "La interseccion es (" << interseccionX << ";" << interseccionY << ")" << endl;
+    }
+break;
+}
+    }
                      }
     return 0;
 }
