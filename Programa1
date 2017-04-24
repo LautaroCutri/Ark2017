@@ -132,6 +132,12 @@ Clock_deco();
     }
 break;
 }
+//Programa fecha
+{
+case 6:
+
+break;
+}
     }
                      }
     return 0;
