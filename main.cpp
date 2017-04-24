@@ -50,7 +50,7 @@ int main()
 }
 Clock_deco();
     while(true){
-        cout << "Exit: 0" << endl << "Nombre: 1" << endl << "Temperatura: 2" << endl << "Distancia: 3" << endl << "+/-: 4" << endl << "Interseccion: 5" << endl;
+        cout << "Exit: 0" << endl << "Nombre: 1" << endl << "Temperatura: 2" << endl << "Distancia: 3" << endl << "+/-: 4" << endl << "Interseccion: 5" << endl << "Mayor: 7" << endl;
         cin >> programa;
 switch(programa){
 case 0:
@@ -135,9 +135,32 @@ break;
 //Programa fecha
 {
 case 6:
-
 break;
 }
+//Programa mayor valor
+{
+case 7:
+    cout << "Ingrese un numero seguido de enter hasta ingresar 0" << endl;
+    float promedio = 0;
+    int mayorvalor, numeroDeEntrada;
+    cin >>numeroDeEntrada;
+    int i;
+    mayorvalor = numeroDeEntrada;
+    while(numeroDeEntrada!=0){
+          promedio += numeroDeEntrada;
+    if(mayorvalor<numeroDeEntrada){
+    mayorvalor=numeroDeEntrada;
+    }
+        cin >> numeroDeEntrada;
+        i++;
+    }
+    if(numeroDeEntrada==0){
+        cout << "No se ingresaron valores" << endl;
+    }else{
+         cout << "Mayor valor: " << mayorvalor << endl << "Promedio: " << promedio/i << endl;
+    }
+}
+
     }
                      }
     return 0;
